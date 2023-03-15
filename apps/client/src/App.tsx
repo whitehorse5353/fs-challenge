@@ -8,47 +8,43 @@ import GistsCard, {Gists} from './components/GistsCard';
 
 function App() {
   const [profileTitle, setProfileTitle] = useState<string>();
-  const [isOrgLoading, setIsOrgLoading] = useState<boolean>();
-  const [isGistsLoading, setIsGistsLoading] = useState<boolean>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const [profileData, setProfileData] = useState<User | undefined>();
   const [orgData, setOrgData] = useState<Organisation[] | undefined>();
   const [gistsData, setGistsData] = useState<Gists[] | undefined>();
-    const fetchUserData = async () => {
+
+    const fetchData = async () => {
         if (profileTitle && profileTitle !== '') {
+            setIsLoading(true);
             const user = await fetch(`api/vcs/user/${profileTitle}`);
             const userData: User = await user.json();
             setProfileData(userData);
+            setIsLoading(false);
 
-            setIsOrgLoading(true);
             const organisation = await fetch(`api/vcs/user/${profileTitle}/orgs`);
             const organisationData: Organisation[] = await organisation.json();
             setOrgData(organisationData);
-            setIsOrgLoading(false);
-            console.log(organisationData)
-            setIsGistsLoading(true);
+
             const gists = await fetch(`api/vcs/user/${profileTitle}/gists`);
             const gistsData: Gists[] = await gists.json();
             setGistsData(gistsData);
-            setIsGistsLoading(false);
-
-            // console.log(gistsData)
         }
     }
 
     return (<>
             <Box sx={{my: 4}}>
-                <SearchWrapper setProfileTitle={setProfileTitle} fetchUserData={fetchUserData}/>
-                {profileData &&
-                    <div style={{ display:'flex', justifyContent:'center' }}><Card sx={{maxWidth: 345}}>
-                        <UserCard profileData={profileData} />
-                        {!isOrgLoading ? (orgData && orgData.length) ?
-                            <OrganisationsCard orgData={orgData} /> : ''
-                            : <CircularProgress color="inherit"/>}
-                        {!isGistsLoading ? (gistsData && gistsData.length) ?
-                            <GistsCard gistsData={gistsData} /> : ''
-                            : <CircularProgress color="inherit"/>}
-                    </Card></div>}
-
+                <SearchWrapper setProfileTitle={setProfileTitle} fetchData={fetchData}/>
+                <div style={{ display:'flex', justifyContent:'center' }}>
+                    <Card sx={{maxWidth: 345}}>
+                        {!isLoading ? <>
+                                {profileData && <UserCard profileData={profileData} />}
+                                {(orgData && orgData.length) ? <OrganisationsCard orgData={orgData} /> : ''}
+                                {(gistsData && gistsData.length) ? <GistsCard gistsData={gistsData} /> : ''}
+                                    </>:<><CircularProgress color="inherit"/> </>
+                        }
+                    </Card>
+                </div>
             </Box>
         </>
     )

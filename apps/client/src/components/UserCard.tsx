@@ -10,10 +10,11 @@ export interface User {
     id: number;
 }
 interface ProfileData {
-    profileData: User
+    profileData: User;
 }
 
-const UserCard: React.FC<ProfileData>= ({profileData}) => {
+const UserCard: React.FC<ProfileData> = ({ profileData}) => {
+
     return (<>
         <CardHeader
             avatar={
@@ -21,7 +22,10 @@ const UserCard: React.FC<ProfileData>= ({profileData}) => {
             }
             title={profileData?.name}
             style={{textAlign: 'left'}}
-            subheader={`${profileData?.company ? profileData?.company : ''} ${profileData?.company && profileData?.location ? `-` : ''} ${profileData?.location ? profileData?.location : ''}`}
+            subheader={
+            `${profileData?.company ? profileData?.company : ''} 
+            ${profileData?.company && profileData?.location ? `-` : ''} 
+            ${profileData?.location ? profileData?.location : ''}`}
         />
         <Divider/>
     </>)

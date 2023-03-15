@@ -3,10 +3,10 @@ import React from "react";
 
 type SearchWrapperProps = {
     setProfileTitle: (val: string) => void;
-    fetchUserData: () => Promise<void>;
+    fetchData: () => Promise<void>;
 }
 
-const SearchWrapper:React.FC<SearchWrapperProps> = ({setProfileTitle, fetchUserData}) => {
+const SearchWrapper:React.FC<SearchWrapperProps> = ({setProfileTitle, fetchData}) => {
     return (<AppBar sx={{backgroundColor: '#333'}}>
         <Toolbar>
             <Typography variant="h6" noWrap component="div">
@@ -16,7 +16,7 @@ const SearchWrapper:React.FC<SearchWrapperProps> = ({setProfileTitle, fetchUserD
                 <Input sx={{color: 'white',}} type="search" placeholder="search"
                        onChange={(evt) => setProfileTitle(evt.target.value)}></Input>
                 <Button sx={{ml: 5, color: 'white', border: 'solid 1px white'}} variant="outlined"
-                        onClick={async () => await fetchUserData()}>Submit</Button>
+                        onClick={async () => await fetchData()}>Submit</Button>
             </Box>
         </Toolbar>
     </AppBar>)
