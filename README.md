@@ -13,3 +13,4 @@ and the respective `dist` will be available in the ``api`` and ```client``` fold
 ### Side note
 * Din't get a chance to do unit/integeration testing
 * I didn't attempt the second part of the question. If you don't mind we can have a live paring session on our call 
+* Added GH Actions to run CI/CD
