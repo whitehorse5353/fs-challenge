@@ -28,5 +28,5 @@ RUN npm run build
 # RUN npm ci --omit=dev
 # Bundle app source
 COPY . .
-EXPOSE 8080
+EXPOSE 3000
 CMD [ "npm", "start" ]
