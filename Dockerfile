@@ -30,4 +30,4 @@ RUN echo "'DID IT Happen to build!!!!!!!!!!!!!!!!!!!!!!!!'"
 # Bundle app source
 COPY . .
 EXPOSE 3000
-CMD [ "npm", "start" ]
+CMD [ "npm", "run", "start" ]
