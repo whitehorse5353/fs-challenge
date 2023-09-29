@@ -51,7 +51,10 @@ RUN npm i
 #CMD [ "npm", "run", "dev" ]
 RUN npm run build
 RUN npm prune --production
-COPY /apps/api/dist /app/dist
+RUN echo "====================="
+RUN pwd
+RUN echo "====================="
+COPY /app/apps/api/dist /app/dist
 CMD [ "npm", "start" ]
 #RUN npm i
 #
