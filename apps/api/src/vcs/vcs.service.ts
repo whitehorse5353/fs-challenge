@@ -12,7 +12,7 @@ export class VcsService {
       .get(`https://api.github.com/users/${username}`, {
         headers: {
           Authorization:
-            'Bearer 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',
+            'Bearer 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',
         },
       })
       .pipe(
@@ -36,7 +36,7 @@ export class VcsService {
       .get(`https://api.github.com/users/${username}/orgs`, {
         headers: {
           Authorization:
-            'Bearer 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',
+            'Bearer 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',
         },
       })
       .pipe(
@@ -59,7 +59,7 @@ export class VcsService {
       .get(`https://api.github.com/users/${username}/gists`, {
         headers: {
           Authorization:
-            'Bearer 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',
+            'Bearer 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',
         },
       })
       .pipe(

@@ -7,7 +7,7 @@ type SearchWrapperProps = {
 }
 
 const SearchWrapper:React.FC<SearchWrapperProps> = ({setProfileTitle, fetchData}) => {
-    return (<AppBar sx={{backgroundColor: '#333'}}>
+    return (<AppBar sx={{backgroundColor: '#BCBCBC'}}>
         <Toolbar>
             <Typography variant="h6" noWrap component="div">
                 Github profile app
