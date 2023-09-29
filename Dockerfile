@@ -24,6 +24,7 @@ COPY package*.json ./
 COPY turbo.json ./
 RUN npm install
 RUN npm run build
+RUN echo "'DID IT Happen to build!!!!!!!!!!!!!!!!!!!!!!!!'"
 # If you are building your code for production
 # RUN npm ci --omit=dev
 # Bundle app source
